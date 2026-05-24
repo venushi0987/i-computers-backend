@@ -1,6 +1,10 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export async function createUser(req, res) {
     try {
@@ -60,7 +64,7 @@ export async function loginUser(req, res) { //create login function
                 isBlocked: user.isBlocked,
             };
 
-            const token = jwt.sign(userInfo, "com99#12@"); //create user token
+            const token = jwt.sign(userInfo, JWT_SECRET); //create user token
             res.json({ token: token }); //send the token to the client
 
         } else {
