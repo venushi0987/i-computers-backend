@@ -65,7 +65,7 @@ export async function loginUser(req, res) { //create login function
             };
 
             const token = jwt.sign(userInfo, JWT_SECRET); //create user token
-            res.json({ token: token }); //send the token to the client
+            res.json({ token: token, isAdmin: user.isAdmin }); //send the token to the client
 
         } else {
             res.status(401).json({ message: "Invalid password" });

@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import authenticateUser from './middlewares/authenticate.js';
 import productRouter from './routes/productRouter.js';
 import dotenv from "dotenv";
+import cors from 'cors';
 
 dotenv.config();
 const mongoUri = process.env.MONGO_URI;
@@ -16,6 +17,8 @@ mongoose.connect(mongoUri).then(
 );
 
 const app = express(); 
+
+app.use(cors()); // Enable CORS for all routes
 
 app.use(express.json());
 
