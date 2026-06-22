@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema({
         required: true
     },
 
-    altName : {
+    altNames : {
         type: [String],
         default: []
     },
