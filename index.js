@@ -4,8 +4,10 @@ import userRouter from './routes/userRouter.js';
 import jwt from "jsonwebtoken";
 import authenticateUser from './middlewares/authenticate.js';
 import productRouter from './routes/productRouter.js';
+import orderRouter from './routes/orderRouter.js';
 import dotenv from "dotenv";
 import cors from 'cors';
+
 
 dotenv.config();
 const mongoUri = process.env.MONGO_URI;
@@ -26,6 +28,7 @@ app.use(authenticateUser); //use the authentication middleware for all routes
 
 app.use('/users', userRouter);
 app.use('/products', productRouter);
+app.use('/orders', orderRouter);
 
 app.listen(3000, 
     () => {
