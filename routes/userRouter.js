@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser, loginUser, getAllUsers, updateUserStatus, updateUserRole, getCurrentUser } from '../controllers/userController.js';
+import { createUser, loginUser, getAllUsers, updateUserStatus, updateUserRole, getCurrentUser, updateUserProfile,updateUserPassword } from '../controllers/userController.js';
 
 const userRouter = express.Router();
 
@@ -9,5 +9,8 @@ userRouter.post("/login", loginUser);
 userRouter.get("/:pageSize/:pageNumber", getAllUsers);
 userRouter.put("/status", updateUserStatus); // Add this line to handle user status updates
 userRouter.put("/role", updateUserRole); // Add this line to handle user role updates
+userRouter.put("/update" , updateUserProfile)
+userRouter.put("/password" , updateUserPassword)
+
 
 export default userRouter;

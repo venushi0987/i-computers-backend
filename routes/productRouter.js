@@ -1,14 +1,12 @@
 import express from "express";
-import { createProduct, deleteProduct, getAllProducts, updateProduct, getProductById } from "../controllers/productController.js";
+import { createProduct, deleteProduct, getAllProducts, updateProduct, getProductById, searchProducts } from "../controllers/productController.js";
 
 const productRouter = express.Router();
 
 productRouter.post("/", createProduct);
 productRouter.get("/", getAllProducts);
 
-productRouter.get("/search",(req, res) => {
-    res.json({ message:"Search products"});
-});
+productRouter.get("/search/:query", searchProducts);
 
 productRouter.delete("/:id", deleteProduct);
 productRouter.put("/:id", updateProduct);
